@@ -8,7 +8,7 @@ export const SuperHeroesPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/superheroerfs")
+      .get("http://localhost:4000/superheroes")
       .then((res) => {
         setData(res.data);
         setIsLoading(false);
@@ -29,7 +29,7 @@ export const SuperHeroesPage = () => {
     <>
       <h2>Super Heroes Page</h2>
       {data.map((hero) => {
-        return <div>{hero.name}</div>;
+        return <div key={hero.id}>{hero.name}</div>;
       })}
     </>
   );

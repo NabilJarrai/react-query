@@ -5,10 +5,13 @@ const fetchSuperHeroes = () => {
   return axios.get("http://localhost:4000/superheroes");
 };
 export const RQSuperHeroesPage = () => {
-  const { isLoading, data, isError, error } = useQuery(
+  const { isLoading, data, isError, error, isFetching } = useQuery(
     "super-heroes",
-    fetchSuperHeroes
+    fetchSuperHeroes,
+    { cacheTime: 5000 }
   );
+  console.log(isLoading);
+  console.log(isFetching);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -20,7 +23,7 @@ export const RQSuperHeroesPage = () => {
     <>
       <h2>RQ Super Heroes Page</h2>
       {data?.data.map((hero) => {
-        return <div>{hero.name}</div>;
+        return <div key={hero.id}>{hero.name}</div>;
       })}
     </>
   );
