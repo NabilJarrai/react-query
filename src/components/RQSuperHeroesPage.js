@@ -10,9 +10,8 @@ export const RQSuperHeroesPage = () => {
     "super-heroes",
     fetchSuperHeroes,
     {
-      staleTime: 0,
-      refetchOnMount: true,
-      refetchOnWindowFocus: false,
+      refetchInterval: 2000,
+      refetchIntervalInBackground: true,
     }
   );
   console.log({ isFetching, isLoading });
